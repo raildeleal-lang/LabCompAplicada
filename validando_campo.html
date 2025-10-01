@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<read>
+
+<script>
+function validar() {
+	const nomeInput = document.getElementById("nome");
+	const senhaInput = document.getElementById("senha");
+
+	const nome = nomeInput.value.trim();
+	const senha = senhaInput.value.trim();
+
+	if (nome == ""){
+		alert('Preencha o campo com seu nome');	
+		nomeInput.focus();
+		return false;
+}
+	if (senha == ""){
+		alert('Preencha o campo com sua senha');	
+		senhaInput.focus();
+		return false;
+}
+	alert('Dados preenchidos!');
+	return true;
+}
+</script>
+
+</read>
+
+<body>
+<form name="form1" action="#" method="post" onsubmit="return validar()">
+	Nome:
+	<input name="nome" id="nome" type="text"> <br /><br />
+
+	Senha:
+	<input name="senha" id="senha" type="password"> <br /><br />
+
+	<input type="submit" value="Entrar">
+</form>
+
+</body>
+</html>

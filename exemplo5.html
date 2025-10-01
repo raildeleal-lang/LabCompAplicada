@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<read>
+<script>
+function validaCampo() {
+	const campoBuscar = document.getElementById("CampoBuscar");
+	const valor = campoBuscar.value.trim();
+
+	if (valor == "") {
+		alert("Preencha o campo de busca");
+		campoBuscar.focus();
+		return false;
+	}
+	alert("Dados enviados com sucesso!");
+	return true;
+}
+</script>
+
+</read>
+<body>
+
+<form name="frmBusca" id="frmBusca" action="#" method="get" onsubmit="return validaCampo()">
+	<label for="CampoBuscar"> Termo de Busca: </label>
+
+	<input type="text" name="CampoBuscar" id="CampoBuscar" />
+
+	<input type="submit" name="bntBuscar" value="Buscar"/>
+
+</form>
+
+</body>
+</html>

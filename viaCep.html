@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+   <main>
+	<h1>Buscador de Endereços por CEP</h1>
+	<input type="text" id="cep-input" placeholder="Digite o CEP" maxlength="8">
+	<button id="buscar-btn">Buscar</button>
+	<div id="resultado">
+
+<style>
+   body { font-family: sans-serif; display: flex; justify-content: center; }
+   main { background-color: white; padding: 20px; border-radius: 8px; }
+
+</style>
+
+	    <p>O resultado aparecerá aqui...</p>
+
+   </main>
+
+   <script>
+   const cepInput = document.getElementById("cep-input");
+   const buscarBtn = document.getElementById("buscar-btn");
+   const resultadoDiv = document.getElementById("resultado");
+
+   buscarBtn.addEventListener("click", async () => {
+   const cep = cepInput.value;
+
+   if (!cep) {
+	resultadoDiv.innerHTML = "<p>Por favor, digite um CEP.</p>";
+	return;
+}
+
+   try {
+	const response = await fetch(`http://viacep.com.br/ws/${cep}/json/`);
+	const data = await response.json();
+
+if (data.erro) {
+   resultadoDiv.innerHTML = `<p>CEP não encontrado: ${cep}</p>`;
+	} else {
+	const enderecoFormatado = `
+</p>
+	   <strong>Logradouro:</strong> ${data.logradouro || `Não informado`}<br>
+	   <strong>Bairro:</strong> ${data.bairro || `Não informado`}<br>
+	   <strong>Cidade:</strong> ${data.localidade || `Não informado`}<br>
+	   <strong>Estado:</strong> ${data.uf || `Não informado`}
+   `;
+resultadoDiv.innerHTML = enderecoFormatado;
+}
+
+}  catch (error) {
+	resultadoDiv.innerHTML = `<p>Erro ao buscar o CEP: ${error.message}</p>`;
+}
+
+   });
+
+   </script>
+
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<read>
+<script>
+	function validarFormulario() {
+		const sexoSelecionado = document.querySelector('input[name="sexo"]:checked');
+		if (!sexoSelecionado) {
+			alert("Por favor, selecione um sexo.");
+			return false;
+}
+		const cargo = document.getElementById("cargo").value;
+		if (cargo == "") {
+			alert("Por favor, selecione um cargo.");
+			document.getElementById("cargo").focus();
+			return false;
+}
+		alert("Formulário validado com sucesso!");
+		return true;
+}
+
+</script>
+</read>
+
+<body>
+<form name="cadastroForm" onsubmit="return validarFormulario()">
+	<p>Sexo:
+	<label><input type="radio" name="sexo" value="M" id="masc"/> Masculino</label>
+	<label><input type="radio" name="sexo" value="F" id="fem"/> Feminino</label>
+	</p>
+	<br/>
+	<label for="cargo">Selecione o cargo:</label>
+	<select name="cargo" id="cargo">
+		<option value="">Selecione o cargo</option>
+		<option value="programador">Programador</option>
+		<option value="designer">Designer</option>
+		<option value="tester">Tester</option>
+		<option value="todas">Todas</option>
+	</select>
+	<br/>
+	<input type="submit" value="Validar" class="botao" />
+
+</form>
+
+</body>
+</html>
